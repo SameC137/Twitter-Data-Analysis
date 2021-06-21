@@ -57,6 +57,14 @@ class TweetDfExtractor:
     def find_sentiments(self, text)->list:
         polarity=[]
         subjectivity=[]
+        for i in self.tweets_list:
+            try:   
+                text=TextBlob(i["retweeted_status"]["extended_tweet"]["full_text"])
+                polarity.append(text.sentiment.polarity)
+                subjectivity.append (text.sentiment.subjectivity)
+            except KeyError:
+                polarity.append(None)
+                subjectivity.append(None)
         return polarity, subjectivity
 
     def find_created_time(self)->list:
@@ -103,7 +111,10 @@ class TweetDfExtractor:
     def find_favourite_count(self)->list:
         favourite_count=[]
         for i in self.tweets_list:
-            favourite_count.append(i["favourites_count"])
+            try:
+                favourite_count.append(i["retweeted_status"]["favorite_count"])
+            except KeyError:
+                favourite_count.append(None)
         return favourite_count
     
     def find_retweet_count(self)->list:
