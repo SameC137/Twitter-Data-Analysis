@@ -39,12 +39,15 @@ class TweetDfExtractor:
 
     # an example function
     def find_statuses_count(self)->list:
-        statuses_count =""
+        statuses_count=[]
+        for i in self.tweets_list:
+            statuses_count.append(i["statuses_count"])
+        return statuses_count
         
     def find_full_text(self)->list:
         text=[]
-        for i in self.tweet_list:
-            text.append(i.text)
+        for i in self.tweets_list:
+            text.append(i["text"])
         return text
        
     
@@ -53,22 +56,32 @@ class TweetDfExtractor:
         return polarity, self.subjectivity
 
     def find_created_time(self)->list:
-       
+        created_at=""
         return created_at
 
     def find_source(self)->list:
-        source = ""
-
+        source=[]
+        for i in self.tweets_list:
+            source.append(i["source"])
         return source
 
     def find_screen_name(self)->list:
-        screen_name = ""
+        screen_name=[]
+        for i in self.tweets_list:
+            screen_name.append(i["screen_name"])
+        return screen_name
 
     def find_followers_count(self)->list:
-        followers_count = ""
+        followers_count=[]
+        for i in self.tweets_list:
+            followers_count.append(i["followers_count"])
+        return followers_count
 
     def find_friends_count(self)->list:
-        friends_count = ""
+        friends_count=[]
+        for i in self.tweets_list:
+            friends_count.append(i["friends_count"])
+        return friends_count
 
     def is_sensitive(self)->list:
         try:
@@ -79,16 +92,30 @@ class TweetDfExtractor:
         return is_sensitive
 
     def find_favourite_count(self)->list:
-        return
+        favourite_count=[]
+        for i in self.tweets_list:
+            favourite_count.append(i["favourite_count"])
+        return favourite_count
     
     def find_retweet_count(self)->list:
-        retweet_count = ""
+        retweet_count=[]
+        for i in self.tweets_list:
+            retweet_count.append(i["retweet_count"])
+        return retweet_count
 
     def find_hashtags(self)->list:
-        hashtags =""
+        
+        hashtags=[]
+        for i in self.tweets_list:
+            hashtags.append(i["hashtags"])
+        return hashtags
 
     def find_mentions(self)->list:
-        mentions = ""
+        
+        mentions=[]
+        for i in self.tweets_list:
+            mentions.append(i["mentions"])
+        return mentions
 
 
     def find_location(self)->list:
@@ -96,6 +123,7 @@ class TweetDfExtractor:
             location = self.tweets_list['user']['location']
         except TypeError:
             location = ''
+        print(location)
         
         return location
 
