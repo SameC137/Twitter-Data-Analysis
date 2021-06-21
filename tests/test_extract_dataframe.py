@@ -28,7 +28,6 @@ class TestTweetDfExtractor(unittest.TestCase):
 
 
     def test_find_statuses_count(self):
-        print(self.df.find_statuses_count()[:5])
         self.assertEqual(self.df.find_statuses_count(), [204051, 3462, 6727, 45477, 277957])
 
     def test_find_full_text(self):

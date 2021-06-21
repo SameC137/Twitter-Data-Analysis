@@ -14,7 +14,7 @@ class Clean_Tweets:
         """
         unwanted_rows = df[df['retweet_count'] == 'retweet_count' ].index
         df.drop(unwanted_rows , inplace=True)
-        df = df[df['polarity'] != 'polarity']
+        # df = df[df['polarity'] != 'polarity']
         
         return df
     def drop_duplicate(self, df:pd.DataFrame)->pd.DataFrame:
@@ -52,8 +52,8 @@ class Clean_Tweets:
         """
         remove non english tweets from lang
         """
-        listOfNonEnglishRows=df.index[df['lang'] != "en"].tolist()
+        unwanted_rows=df[df['lang'] != "en"].index
 
-        df = df.drop(listOfNonEnglishRows ,inplace=True)
+        df = df.drop(unwanted_rows ,inplace=True)
         
         return df
