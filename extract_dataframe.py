@@ -60,7 +60,10 @@ class TweetDfExtractor:
         return polarity, subjectivity
 
     def find_created_time(self)->list:
-        created_at=""
+        
+        created_at=[]
+        for i in self.tweets_list:
+            created_at.append(i["created_at"])
         return created_at
 
     def find_source(self)->list:
@@ -88,17 +91,19 @@ class TweetDfExtractor:
         return friends_count
 
     def is_sensitive(self)->list:
-        try:
-            is_sensitive = [x['possibly_sensitive'] for x in self.tweets_list]
-        except KeyError:
-            is_sensitive = None
+        is_sensitive=[]
+        for x in self.tweets_list:
+            try:
+                is_sensitive.append(x['possibly_sensitive'])
+            except KeyError:
+                is_sensitive.append(None)
 
         return is_sensitive
 
     def find_favourite_count(self)->list:
         favourite_count=[]
         for i in self.tweets_list:
-            favourite_count.append(i["user"]["favourites_count"])
+            favourite_count.append(i["favourites_count"])
         return favourite_count
     
     def find_retweet_count(self)->list:
@@ -166,6 +171,7 @@ class TweetDfExtractor:
         hashtags = self.find_hashtags()
         mentions = self.find_mentions()
         location = self.find_location()
+
         data = zip(created_at, source, text, polarity, subjectivity, lang, fav_count, retweet_count, screen_name, follower_count, friends_count, sensitivity, hashtags, mentions, location)
         df = pd.DataFrame(data=data, columns=columns)
 
