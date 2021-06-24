@@ -1,5 +1,18 @@
 # Twitter-Data-Analysis
 
+
+### Folder Structure
+    clean_tweets_dataframe-contains the program for cleaning the dataframe retrieved from the twitter data through extract dataframe
+    extract_dataframe-contains code for extracting the dataframe from the json file
+    .travis.yml- contains configuration for travis CI
+    requirements.txt-contains required libraries for running scripts
+    data-folder containing data files
+        covid19.json-contains the twitter data in a json format
+    test-folder containing test
+        test_clean_daragram-contains test cases to test cleaning the dataframe
+        test_extract_dataframe-contains test cases to test the extraction of the dataframe
+
+
 ### So here are the bare minimum requirement for completing this task
 
 1. Fork repository to your github account
