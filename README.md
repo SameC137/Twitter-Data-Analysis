@@ -5,7 +5,7 @@
     clean_tweets_dataframe-contains the program for cleaning the dataframe retrieved from the twitter data through extract dataframe
     extract_dataframe-contains code for extracting the dataframe from the json file
     .travis.yml- contains configuration for travis CI
-    requirements.txt-contains required libraries for running scripts
+    requirements.txt-contains required list of libraries for running the scripts
     data-folder containing data files
         covid19.json-contains the twitter data in a json format
     test-folder containing test
